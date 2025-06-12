@@ -73,8 +73,8 @@ s3_path_sessions = f"{args['sessions_source_path']}/{ingestion_timestamp}"
 # Read JSON data from S3
 # In this Glue job, the datasets are created directy as Spark Dataframes. Use the `s3_path_users` and `s3_path_sessions` as argument inside 
 # The `spark.read.json()` method respectively for the users, `users_df`, and sessions, `sessions_df`, dataframes
-users_df = spark.read.json(None)
-sessions_df = spark.read.json(None)
+users_df = spark.read.json(s3_path_users)
+sessions_df = spark.read.json(s3_path_sessions)
 
 # Add ingestion and processing timestamp metadata
 # Extract date for partitioning

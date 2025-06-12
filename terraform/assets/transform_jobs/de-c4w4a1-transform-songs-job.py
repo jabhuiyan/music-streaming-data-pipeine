@@ -103,8 +103,8 @@ df = (
 # For this script, the only transformation that you are going to add is the creation of a new column named `"ingest_on"`
 # Use the `withColumn()` method to create that column
 # Use the `F.to_date()` and `F.lit()` PySpark functions applied over the `ingest_date` object to convert it from string into date
-df = df.None(
-    "ingest_on", F.to_date(F.lit(None), "yyyy-MM-dd")
+df = df.withColumn(
+    "ingest_on", F.to_date(F.lit(ingest_date), "yyyy-MM-dd")
 ).withColumn("source_from", F.lit("postgres_rds"))
 
 
