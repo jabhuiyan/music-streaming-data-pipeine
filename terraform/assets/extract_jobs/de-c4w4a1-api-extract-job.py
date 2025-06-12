@@ -35,7 +35,7 @@ job.init(args["JOB_NAME"], args)
 # This function requires an `api_url` string with the endpoint 
 def fetch_data_from_api(api_url: str):
     # Use the `requests.get()` method to perform a GET request to the `api_url` endpoint
-    response = request.get(api_url)
+    response = requests.get(api_url)
     # See that when the response status code is 200 is the moment in which the data is actually retrieved
     if response.status_code == 200:
         return response.json()

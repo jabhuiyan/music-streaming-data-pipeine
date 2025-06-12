@@ -1,0 +1,64 @@
+[0m19:11:30.542848 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfe2170650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfdff14290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfe00055b0>]}
+
+
+============================== 19:11:30.546957 | e3bfcc7a-8706-4d5d-bae7-9b3c19322a25 ==============================
+[0m19:11:30.546957 [info ] [MainThread]: Running with dbt=1.8.1
+[0m19:11:30.551764 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/home/coder/project/dbt_modeling/logs', 'profiles_dir': '/home/coder/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m19:11:30.594818 [info ] [MainThread]: dbt version: 1.8.1
+[0m19:11:30.595433 [info ] [MainThread]: python version: 3.12.7
+[0m19:11:30.600377 [info ] [MainThread]: python path: /home/coder/miniconda/bin/python
+[0m19:11:30.605025 [info ] [MainThread]: os info: Linux-6.5.0-1020-aws-x86_64-with-glibc2.35
+[0m19:11:30.730231 [debug] [MainThread]: Redshift adapter: Setting redshift_connector to ERROR
+[0m19:11:30.730848 [debug] [MainThread]: Redshift adapter: Setting redshift_connector.core to ERROR
+[0m19:11:30.890000 [info ] [MainThread]: Using profiles dir at /home/coder/.dbt
+[0m19:11:30.890607 [info ] [MainThread]: Using profiles.yml file at /home/coder/.dbt/profiles.yml
+[0m19:11:30.898000 [info ] [MainThread]: Using dbt_project.yml file at /home/coder/project/dbt_modeling/dbt_project.yml
+[0m19:11:30.902994 [info ] [MainThread]: adapter type: redshift
+[0m19:11:30.907599 [info ] [MainThread]: adapter version: 1.8.1
+[0m19:11:31.034499 [info ] [MainThread]: Configuration:
+[0m19:11:31.035029 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m19:11:31.039902 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m19:11:31.044650 [info ] [MainThread]: Required dependencies:
+[0m19:11:31.048918 [debug] [MainThread]: Executing "git --help"
+[0m19:11:31.059024 [debug] [MainThread]: STDOUT: "b"usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m19:11:31.059482 [debug] [MainThread]: STDERR: "b''"
+[0m19:11:31.073465 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m19:11:31.088941 [info ] [MainThread]: Connection:
+[0m19:11:31.095443 [info ] [MainThread]:   host: de-c4w4a1-redshift-cluster.cknnebttcngb.us-east-1.redshift.amazonaws.com
+[0m19:11:31.101690 [info ] [MainThread]:   user: defaultuser
+[0m19:11:31.107927 [info ] [MainThread]:   port: 5439
+[0m19:11:31.114065 [info ] [MainThread]:   database: dev
+[0m19:11:31.120449 [info ] [MainThread]:   method: database
+[0m19:11:31.126861 [info ] [MainThread]:   cluster_id: None
+[0m19:11:31.133194 [info ] [MainThread]:   iam_profile: None
+[0m19:11:31.139334 [info ] [MainThread]:   schema: deftunes_serving
+[0m19:11:31.145913 [info ] [MainThread]:   sslmode: prefer
+[0m19:11:31.152580 [info ] [MainThread]:   region: None
+[0m19:11:31.159069 [info ] [MainThread]:   sslmode: prefer
+[0m19:11:31.165559 [info ] [MainThread]:   region: None
+[0m19:11:31.171862 [info ] [MainThread]:   iam_profile: None
+[0m19:11:31.178588 [info ] [MainThread]:   autocreate: False
+[0m19:11:31.186084 [info ] [MainThread]:   db_groups: []
+[0m19:11:31.193069 [info ] [MainThread]:   ra3_node: False
+[0m19:11:31.199348 [info ] [MainThread]:   connect_timeout: None
+[0m19:11:31.205991 [info ] [MainThread]:   role: None
+[0m19:11:31.212557 [info ] [MainThread]:   retries: 1
+[0m19:11:31.219356 [info ] [MainThread]:   autocommit: True
+[0m19:11:31.225569 [info ] [MainThread]: Registered adapter: redshift=1.8.1
+[0m19:11:31.489323 [debug] [MainThread]: Acquiring new redshift connection 'debug'
+[0m19:11:31.495113 [debug] [MainThread]: Using redshift connection "debug"
+[0m19:11:31.496606 [debug] [MainThread]: On debug: select 1 as id
+[0m19:11:31.503104 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:11:31.513858 [debug] [MainThread]: Redshift adapter: Establishing connection using ssl with `sslmode` set to 'prefer'.To connect without ssl, set `sslmode` to 'disable'.
+[0m19:11:31.517037 [debug] [MainThread]: Redshift adapter: Connecting to redshift with username/password based auth...
+[0m19:11:31.725150 [debug] [MainThread]: SQL status: SUCCESS in 0.222 seconds
+[0m19:11:31.726368 [debug] [MainThread]: On debug: Close
+[0m19:11:31.732136 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m19:11:31.738905 [info ] [MainThread]: [32mAll checks passed![0m
+[0m19:11:31.746207 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 1.3244822, "process_user_time": 1.713713, "process_kernel_time": 0.145617, "process_mem_max_rss": "98724", "process_in_blocks": "42139", "process_out_blocks": "440"}
+[0m19:11:31.752503 [debug] [MainThread]: Command `dbt debug` succeeded at 19:11:31.752381 after 1.33 seconds
+[0m19:11:31.759792 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m19:11:31.765996 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfe05f6660>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfdfcd81d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7acfdf5feb40>]}
+[0m19:11:31.772538 [debug] [MainThread]: Flushing usage events
