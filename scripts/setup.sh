@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-export de_project="de-c4w4a1"
+export de_project="de-c4w4a2"
 export de_project_underscore=$(echo "$de_project" | sed 's/-/_/g')
 export AWS_DEFAULT_REGION="us-east-1"
 export VPC_ID=$(aws rds describe-db-instances --db-instance-identifier $de_project-rds --output text --query "DBInstances[].DBSubnetGroup.VpcId")
@@ -31,9 +31,19 @@ echo "export TF_VAR_scripts_bucket=$de_project-$(aws sts get-caller-identity --q
 
 source $HOME/.bashrc
 
+#Copy files to scripts bucket
+aws s3 cp ./terraform/assets/extract_jobs/de-c4w4a2-api-extract-job.py s3://$TF_VAR_scripts_bucket/de-c4w4a2-api-extract-job.py
+aws s3 cp ./terraform/assets/extract_jobs/de-c4w4a2-extract-songs-job.py s3://$TF_VAR_scripts_bucket/de-c4w4a2-extract-songs-job.py
+aws s3 cp ./terraform/assets/transform_jobs/de-c4w4a2-transform-json-job.py s3://$TF_VAR_scripts_bucket/de-c4w4a2-transform-json-job.py
+aws s3 cp ./terraform/assets/transform_jobs/de-c4w4a2-transform-songs-job.py s3://$TF_VAR_scripts_bucket/de-c4w4a2-transform-songs-job.py
+clear
+
 # Replace the file name in the backend.tf file
 script_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 sed -i "s/<terraform_state_file>/$TF_VAR_project-$(aws sts get-caller-identity --query 'Account' --output text)-us-east-1-terraform-state/g" "$script_dir/../terraform/backend.tf"
 
+# Update dbt libraries
+pip install --upgrade dbt-core dbt-redshift dbt-postgres
+clear
 # Final success message
 echo "Setup completed successfully. All environment variables and Terraform backend configurations have been set."
