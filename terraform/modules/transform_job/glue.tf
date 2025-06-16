@@ -1,4 +1,3 @@
-# For the `"aws_glue_catalog_database" "transform_db"` resource, set the name to `var.catalog_database`
 resource "aws_glue_catalog_database" "transform_db" {
   name        = var.catalog_database
   description = "Glue Catalog database for transformations"
@@ -11,30 +10,20 @@ resource "aws_glue_job" "json_transformation_job" {
   glue_version = "4.0"
   command {
     name            = "glueetl"
-    # Use the scripts_bucket variable and `de-c4w4a1-transform-json-job.py` as the object key
-    script_location = "s3://${var.scripts_bucket}/de-c4w4a1-transform-json-job.py"
+    script_location = "s3://${var.scripts_bucket}/de-c4w4a2-transform-json-job.py"
     python_version  = 3
   }
 
   default_arguments = {
     "--enable-job-insights"     = "true"
     "--job-language"            = "python"
-    # Set `"--catalog_database"` to `aws_glue_catalog_database.transform_db.name`
     "--catalog_database"        = aws_glue_catalog_database.transform_db.name
-    # Set "--ingest_date" to the server's current date in Pacific Time (UTC-7), in "yyyy-mm-dd" format.
-    # (replace the placeholder `<PACIFIC-TIME-CURRENT-DATE>`)
-    "--ingest_date"             = "2025-06-12"
-    # Review the users source path
+    "--ingest_date"             = "2020-02-01"
     "--users_source_path"       = "s3://${var.data_lake_bucket}/landing_zone/api/users/"
-    # Review the sessions source path
     "--sessions_source_path"    = "s3://${var.data_lake_bucket}/landing_zone/api/sessions/"
-    # Review the target bucket path
     "--target_bucket_path"      = "${var.data_lake_bucket}"
-    # Set `"--users_table"` to `var.users_table`
     "--users_table"             = var.users_table
-    # Set `"--sessions_table"` to `var.sessions_table`
     "--sessions_table"          = var.sessions_table
-    # Set `"--datalake-formats"` to `"iceberg"`
     "--datalake-formats"        = "iceberg"
     "--enable-glue-datacatalog" = true
 
@@ -53,8 +42,7 @@ resource "aws_glue_job" "songs_transformation_job" {
 
   command {
     name            = "glueetl"
-    # Use the scripts_bucket variable and `de-c4w4a1-transform-songs-job.py` as the object key
-    script_location = "s3://${var.scripts_bucket}/de-c4w4a1-transform-songs-job.py"
+    script_location = "s3://${var.scripts_bucket}/de-c4w4a2-transform-songs-job.py"
     python_version  = 3
   }
 
@@ -62,9 +50,7 @@ resource "aws_glue_job" "songs_transformation_job" {
     "--enable-job-insights"     = "true"
     "--job-language"            = "python"
     "--catalog_database"        = aws_glue_catalog_database.transform_db.name
-    # Set "--ingest_date" to the server's current date in Pacific Time (UTC-7), in "yyyy-mm-dd" format.
-    # (replace the placeholder `<PACIFIC-TIME-CURRENT-DATE>`)
-    "--ingest_date"             = "2025-06-12"
+    "--ingest_date"             = "2020-02-01"
     "--source_bucket_path"      = "${var.data_lake_bucket}"
     "--target_bucket_path"      = "${var.data_lake_bucket}"
     "--songs_table"             = var.songs_table

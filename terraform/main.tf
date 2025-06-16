@@ -20,15 +20,27 @@ module "transform_job" {
   project = var.project
   region  = var.region
   glue_role_arn       = module.extract_job.glue_role_arn
-  scripts_bucket      = var.scripts_bucket
   catalog_database    = var.catalog_database
   data_lake_bucket    = var.data_lake_bucket
+  scripts_bucket      = var.scripts_bucket
   users_table         = var.users_table
   sessions_table      = var.sessions_table
   songs_table         = var.songs_table
 
   depends_on = [module.extract_job]
 }
+
+
+module "data_quality" {
+  source = "./modules/data_quality"
+
+  project            = var.project
+  region             = var.region
+  catalog_database   = var.catalog_database
+
+  depends_on = [module.transform_job]
+}
+
 
 module "serving" {
   source = "./modules/serving"
@@ -46,4 +58,7 @@ module "serving" {
   redshift_password = var.redshift_password
   redshift_database = var.redshift_database
   redshift_port     = var.redshift_port
+
+
+  #depends_on = [module.transform_job]
 }

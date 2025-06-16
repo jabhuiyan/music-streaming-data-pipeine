@@ -55,7 +55,6 @@ variable "data_lake_bucket" {
   description = "Data lake bucket name"
 }
 
-
 variable "scripts_bucket" {
   type        = string
   description = "Glue scripts bucket name"

@@ -2,7 +2,7 @@ output "project" {
   value = var.project
 }
 
-# Extract module
+# Module: Extract
 output "glue_rds_extract_job" {
   value = module.extract_job.glue_rds_extract_job
 }
@@ -41,4 +41,17 @@ output "serving_schema" {
 
 output "transform_schema" {
   value = module.serving.transform_schema
+}
+
+
+output "sessions_db_ruleset_name" {
+  value = module.data_quality.sessions_db_ruleset
+}
+
+output "songs_db_ruleset_name" {
+  value = module.data_quality.songs_db_ruleset
+}
+
+output "users_db_ruleset_name" {
+  value = module.data_quality.users_db_ruleset
 }

@@ -1,6 +1,6 @@
 dbt_modeling:
   outputs:
-    dev:
+    serving:
       dbname: dev
       host: <REDSHIFT_ENDPOINT>
       password: Defaultuserpwrd1234+
@@ -9,4 +9,4 @@ dbt_modeling:
       threads: 1
       type: redshift
       user: defaultuser
-  target: dev
+  target: serving

@@ -12,6 +12,18 @@ data "aws_iam_policy_document" "glue_base_policy" {
 
     actions = ["sts:AssumeRole"]
   }
+
+  statement {
+    sid    = "AllowEC2ToAssumeRole"
+    effect = "Allow"
+
+    principals {
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.project}-ec2-role"]
+      type        = "AWS"
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
 }
 
 data "aws_iam_policy_document" "glue_access_policy" {
